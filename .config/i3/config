@@ -1,0 +1,232 @@
+#---------------------#
+# i3 config file (v4) #
+#---------------------#
+
+
+#---------------------#
+# font and variables  #
+#---------------------#
+font pango:SauceCodePro NF Medium 10
+set $mod Mod4
+set $alt Mod1
+set $exec exec --no-startup-id
+
+
+#-------------------#
+# apps and bindings #
+#-------------------#
+bindsym $mod+Return $exec sakura -e fish
+bindsym $mod+Shift+Return $exec sakura --class floating -e fish
+bindsym $mod+t $exec thunar
+bindsym $mod+d $exec j4-dmenu-desktop --dmenu "dmenu -p 'Execute: ' -fn 'SauceCodePro NF Medium' -b -i -l 10 -nb '$bg' -nf '$fg' -sb '$pc' -sf '$bg'" --usage-log /home/kristhian/.cache/j4-dmenu-desktop/usage.log -f
+bindsym $mod+c $exec greenclip print | grep . | dmenu -i -l 10 -p 'Clipboard: ' -fn 'SauceCodePro NF Medium' -b -nb '$bg' -nf '$fg' -sb '$pc' -sf '$bg' | xargs -r -d'\n' -I '{}' greenclip print '{}'
+bindsym Print $exec flameshot full
+bindsym $mod+Print $exec flameshot gui
+bindsym $mod+Shift+q kill
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen toggle
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+F12 move scratchpad, $exec polybar-msg action scratchpad hook 0
+bindsym +F12 scratchpad show, $exec polybar-msg action scratchpad hook 0
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+
+#----------#
+# settings #
+#----------#
+floating_modifier $mod
+tiling_drag modifier titlebar
+workspace_layout default
+title_align center
+default_border pixel 2
+smart_borders on
+gaps inner 10
+gaps outer 0
+smart_gaps on
+
+
+#----------------#
+# focus and move #
+#----------------#
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+ntilde focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+ntilde move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+bindsym $mod+a focus parent
+bindsym $mod+z focus child
+
+
+#------------#
+# workspaces #
+#------------#
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+
+#-------#
+# rules #
+#-------#
+for_window [class="floating"] floating enable, move scratchpad, focus
+for_window [window_role="About"] floating enable
+for_window [class="Galculator" instance="galculator"] floating enable
+for_window [class="pavucontrol"] floating enable
+for_window [class="org.gnome.FileRoller"] floating enable
+for_window [class="zoom"] floating enable
+for_window [class="doukutsu-rs.x86_64.elf"] floating enable
+for_window [class="steam"] floating enable
+for_window [class="mpv"] floating enable
+
+
+#-------#
+# modes #
+#-------#
+set $Locker i3lock -i /home/kristhian/Imágenes/Capturas-de-pantalla/2024-12-16_21-32.png && sleep 1
+set $mode_system " System (l)Lock, (e)Logout, (r)Reboot, (S)Shutdown "
+mode $mode_system {
+	bindsym l $exec $Locker, mode "default"
+    bindsym e $exec i3-msg exit, mode "default"
+    bindsym s $exec $Locker && systemctl suspend, mode "default"
+    bindsym h $exec $Locker && systemctl hibernate, mode "default"
+    bindsym r $exec systemctl reboot, mode "default"
+    bindsym Shift+s $exec systemctl poweroff -i, mode "default"  
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode $mode_system
+
+
+mode " Resize " {
+	bindsym j resize shrink width 10 px or 10 ppt
+	bindsym k resize grow height 10 px or 10 ppt
+	bindsym l resize shrink height 10 px or 10 ppt
+	bindsym ntilde resize grow width 10 px or 10 ppt
+	bindsym Left resize shrink width 5 px or 5 ppt
+	bindsym Down resize grow height 5 px or 5 ppt
+	bindsym Up resize shrink height 5 px or 5 ppt
+	bindsym Right resize grow width 5 px or 5 ppt
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode " Resize "
+
+
+set $mode_screen " Screen (o)Off, (a)Always on, (D)Default, (b)Bright, (d)Dim "
+mode $mode_screen {
+	bindsym o $exec xset dpms force off, mode "default"
+	bindsym a $exec xset s off -dpms, mode "default"
+	bindsym Shift+d $exec xset s on +dpms, mode "default"
+	bindsym b $exec xrandr --output VGA-1 --brightness 1 && polybar-msg action brightness hook 0, mode "default"
+	bindsym d $exec xrandr --output VGA-1 --brightness .7 && polybar-msg action brightness hook 1, mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+s mode "default"
+}
+bindsym $mod+s mode $mode_screen
+
+
+#--------#
+# volume #
+#--------#
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym $mod+n $exec pactl set-sink-volume @DEFAULT_SINK@ +5% #&& $refresh_i3status
+bindsym $mod+b $exec pactl set-sink-volume @DEFAULT_SINK@ -5% #&& $refresh_i3status
+bindsym $mod+m $exec pactl set-sink-mute @DEFAULT_SINK@ toggle #&& $refresh_i3status
+bindsym XF86AudioMicMute $exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && #$refresh_i3status
+
+
+#--------#
+# colors #
+#--------#
+set $fg #d8dee9
+set $bg #2e3440
+set $pc #81a1c1
+set $sc #b48ead
+set $ac #d08770
+
+# class                 border  backgr. text indicator child_border
+client.focused          $pc     $bg     $fg  $sc       $pc
+client.focused_inactive $bg     $bg     $fg  $sc       $bg
+client.unfocused        $bg     $bg     $fg  $sc       $bg
+client.urgent           $ac     $bg     $fg  $sc       $ac
+client.placeholder      $bg     $bg     $fg  $sc       $bg
+client.background       $bg
+
+
+#-----#
+# bar #
+#-----#
+#bar {
+#    status_command i3status-wrapper.sh
+#    strip_workspace_numbers yes
+#    padding 0 0 0 5px
+#    colors {
+#        background $bg
+#        statusline $fg
+#        separator $bg
+#        focused_workspace  $fg    $fg    $bg
+#        active_workspace   $fg    $fg    $bg
+#        inactive_workspace $bg    $bg    $fg
+#        #urgent_workspace   
+#        binding_mode       $fg    $fg    $bg
+#    }
+#}
+
+
+#------#
+# exec #
+#------#
+$exec /usr/libexec/polkit-gnome-authentication-agent-1
+$exec /usr/bin/gnome-keyring-daemon --start --components=secrets
+$exec /usr/bin/gnome-keyring-daemon --start --components=pkcs11
+$exec greenclip daemon > /dev/null
+$exec autocutsel
+$exec autocutsel -s PRIMARY
+exec_always --no-startup-id polybar-launch.sh

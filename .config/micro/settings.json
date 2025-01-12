@@ -1,0 +1,25 @@
+{
+    "/home/kristhian/.config/i3/config": {
+        "filetype": "shell"
+    },
+    "/home/kristhian/.config/sxhkd/sxhkdrc": {
+        "filetype": "shell"
+    },
+    "basename": true,
+    "colorscheme": "catppuccin-mocha-transparent",
+    "diffgutter": true,
+    "eofnewline": false,
+    "hlsearch": true,
+    "linter": false,
+    "pluginrepos": [
+        "https://raw.githubusercontent.com/gamemaker1/micro-plugin-prettier/main/repo.json"
+    ],
+    "prettier.autoformat": false,
+    "prettier.semi": false,
+    "prettier.singlequote": true,
+    "prettier.tabwidth": 4,
+    "softwrap": true,
+    "statusformatl": " $(filename) $(modified)($(line),$(col)) $(status.paste)| ft:$(opt:filetype)",
+    "statusformatr": "$(percentage)% ",
+    "wordwrap": true
+}

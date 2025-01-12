@@ -1,0 +1,29 @@
+format = """
+$username\
+$directory\
+$shell\
+\n$character"""
+
+[shell]
+disabled = false
+style = "bg:8 fg:7"
+format = '[ $indicator ]($style)'
+fish_indicator = ' fish'
+bash_indicator = ' bash'
+unknown_indicator = ' ?'
+
+[username]
+show_always = true
+style_user = "bg:4 fg:8"
+style_root = "bg:3 fg:8"
+format = '[▓▒░ 󰌽 $user ]($style)'
+
+[directory]
+style = "bg:13 fg:8"
+format = "[  $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[character]
+success_symbol = '[](4) '
+error_symbol = '[](9) '
