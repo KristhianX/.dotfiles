@@ -4,30 +4,30 @@
 DOTFILES_DIR="$HOME/.dotfiles"
 
 # Backup directory for existing dotfiles
-BACKUP_DIR="$HOME/.dotfiles_backup"
+BACKUP_DIR="$HOME/.dotfiles_backup/"
 
 # Exclude list
-EXCLUDE_FILES=("link_dotfiles.sh" "README.md")
+EXCLUDE_FILES=("link_dotfiles.sh" "README.md" ".git")
 
-# Create the backup directory if it doesn't exist
-mkdir -p "$BACKUP_DIR"
-
-# Function to check if a file should be excluded
+# Function to check if a file or directory should be excluded
 is_excluded() {
-  local file_name=$(basename "$1")
+  local relative_path="${1#$DOTFILES_DIR/}"
   for excluded in "${EXCLUDE_FILES[@]}"; do
-    if [[ "$file_name" == "$excluded" ]]; then
+    if [[ "$relative_path" == "$excluded" || "$relative_path" == "$excluded/"* ]]; then
       return 0 # True (excluded)
     fi
   done
   return 1 # False (not excluded)
 }
 
+# Create the backup directory if it doesn't exist
+mkdir -p "$BACKUP_DIR"
+
 # Recursively process files in the .dotfiles directory
 find "$DOTFILES_DIR" -type f | while read -r SOURCE; do
   # Skip excluded files
   if is_excluded "$SOURCE"; then
-    echo "Skipping excluded file: $SOURCE"
+    echo "Skipping excluded: $SOURCE"
     continue
   fi
 
@@ -40,7 +40,7 @@ find "$DOTFILES_DIR" -type f | while read -r SOURCE; do
 
   # Backup existing file if it exists
   if [ -e "$TARGET" ] || [ -L "$TARGET" ]; then
-    echo "Backing up existing $TARGET to $BACKUP_DIR"
+    echo "Backing up existing: $TARGET to $BACKUP_DIR"
     mv "$TARGET" "$BACKUP_DIR"
   fi
 
