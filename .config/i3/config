@@ -131,13 +131,13 @@ set $Locker i3lock -i /home/kristhian/Imágenes/Capturas-de-pantalla/2024-12-16_
 set $mode_system " System (l)Lock, (e)Logout, (r)Reboot, (S)Shutdown "
 mode $mode_system {
 	bindsym l $exec $Locker, mode "default"
-    bindsym e $exec i3-msg exit, mode "default"
-    bindsym s $exec $Locker && systemctl suspend, mode "default"
-    bindsym h $exec $Locker && systemctl hibernate, mode "default"
-    bindsym r $exec systemctl reboot, mode "default"
-    bindsym Shift+s $exec systemctl poweroff -i, mode "default"  
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+	bindsym e $exec i3-msg exit, mode "default"
+	bindsym s $exec $Locker && systemctl suspend, mode "default"
+	bindsym h $exec $Locker && systemctl hibernate, mode "default"
+	bindsym r $exec systemctl reboot, mode "default"
+	bindsym Shift+s $exec systemctl poweroff -i, mode "default"  
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
 bindsym $mod+Shift+e mode $mode_system
 
@@ -179,7 +179,7 @@ set $refresh_i3status killall -SIGUSR1 i3status
 bindsym $mod+n $exec pactl set-sink-volume @DEFAULT_SINK@ +5% #&& $refresh_i3status
 bindsym $mod+b $exec pactl set-sink-volume @DEFAULT_SINK@ -5% #&& $refresh_i3status
 bindsym $mod+m $exec pactl set-sink-mute @DEFAULT_SINK@ toggle #&& $refresh_i3status
-bindsym XF86AudioMicMute $exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && #$refresh_i3status
+bindsym XF86AudioMicMute $exec pactl set-source-mute @DEFAULT_SOURCE@ toggle #&& $refresh_i3status
 
 
 #--------#

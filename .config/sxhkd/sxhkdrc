@@ -20,9 +20,9 @@ super + shift + s
 
 # volume
 super + {KP_Subtract,KP_Add,KP_Enter}
-    pactl {set-sink-volume @DEFAULT_SINK@ -5%, \
-    	   set-sink-volume @DEFAULT_SINK@ +5%, \
-    	   set-sink-mute @DEFAULT_SINK@ toggle}
+	pactl {set-sink-volume @DEFAULT_SINK@ -5%, \
+	       set-sink-volume @DEFAULT_SINK@ +5%, \
+	       set-sink-mute @DEFAULT_SINK@ toggle}
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -107,7 +107,7 @@ super + F12
 
 # move current window to a pre-selected space
 super + shift + m
-    bspc node -n last.!automatic
+	bspc node -n last.!automatic
 
 
 #-----------#
