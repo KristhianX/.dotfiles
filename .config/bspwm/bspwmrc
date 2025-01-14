@@ -37,6 +37,7 @@ if [[ $1 -eq 0 ]]; then
 	(greenclip daemon > /dev/null &)
 	(autocutsel &)
 	(autocutsel -s PRIMARY &)
+	(fastcompmgr -o 0.4 -r 12 -c -C > /dev/null &)
 fi
 
 

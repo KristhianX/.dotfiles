@@ -24,7 +24,13 @@ super + {KP_Subtract,KP_Add,KP_Enter}
 	       set-sink-volume @DEFAULT_SINK@ +5%, \
 	       set-sink-mute @DEFAULT_SINK@ toggle}
 
-# make sxhkd reload its configuration files:
+# launch/kill compositor
+super + {_,shift + }x
+	{pgrep -x fastcompmgr > /dev/null || \
+	(fastcompmgr -o 0.4 -r 12 -c -C > /dev/null &), \
+	pkill fastcompmgr}
+
+# reload sxhkd
 super + Escape
 	pkill -USR1 -x sxhkd && notify-send " sxhkd reloaded. "
 
@@ -135,7 +141,7 @@ super + ctrl + shift + space
 # move/resize #
 #-------------#
 
-# expand/contract a window
+# resize windows
 super + alt + {h,j,k,l}
 	bspc node -z {left -20 0 || bspc node -z right -20 0, \
 	              bottom 0 20 || bspc node -z top 0 20, \

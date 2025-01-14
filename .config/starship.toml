@@ -14,12 +14,12 @@ unknown_indicator = ' ?'
 
 [username]
 show_always = true
-style_user = "bg:4 fg:8"
-style_root = "bg:3 fg:8"
+style_user = "bg:4 fg:0"
+style_root = "bg:3 fg:0"
 format = '[▓▒░ 󰌽 $user ]($style)'
 
 [directory]
-style = "bg:13 fg:8"
+style = "bg:7 fg:0"
 format = "[  $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"

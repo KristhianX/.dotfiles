@@ -5,7 +5,7 @@
 awk '/^[a-z]/ && last {print $0,"\t",last} {last=""} /^#/{last=$0}' \
 ~/.config/sxhkd/sxhkdrc | 
 column -t -s $'\t' | 
-bemenu -p ' Bindings: ' --fn 'SauceCodePro NF Medium 14' \
--i -l 10 --fixed-height -W 0.8 -w -b \
--B 2 --ch 16 --cw 2 -H 30 > /dev/null
+bemenu -s -P '	   ' -p ' Bindings:' --fn 'SauceCodePro NF Medium 12' \
+-i -l 10 --fixed-height -W 0.8 -w -c \
+-B 2 --ch 16 --cw 2 -H 30 -R 8 > /dev/null
 
