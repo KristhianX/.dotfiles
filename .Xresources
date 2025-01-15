@@ -36,3 +36,24 @@ Xcursor.size: 22
 ! white
 *color7: #bac2de
 *color15: #a6adc8
+
+! xterm config
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: true
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcdfilter
+
+XTerm.vt100.metaSendsEscape: true
+XTerm.vt100.scrollBar: false
+XTerm*renderFont: true
+XTerm*faceName: xft:SauceCodePro NF Medium
+XTerm*faceSize: 11
+!XTerm*utf8: 2
+!XTerm*locale: true
+XTerm*internalBorder: 15
+XTerm*scaleHeight: 1.1
+XTerm*cursorBlink: true
+XTerm*cursorUnderLine: true

@@ -4,6 +4,8 @@ $directory\
 $shell\
 \n$character"""
 
+add_newline = false
+
 [shell]
 disabled = false
 style = "bg:8 fg:7"

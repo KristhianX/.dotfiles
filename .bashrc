@@ -18,7 +18,7 @@ case "$-" in
 		# starship
 		eval "$(starship init bash)"
 		# catppuccin mocha colors
-		(cat ~/.local/share/catppuccin-mocha-seq &)
+		#(cat ~/.local/share/catppuccin-mocha-seq &)
 esac
 
 # make xdg-su not use xterm for password prompt

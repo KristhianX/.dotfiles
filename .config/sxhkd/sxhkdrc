@@ -4,7 +4,9 @@
 
 # terminal emulator
 super + {_,shift + }Return
-	{sakura -e fish,sakura --class floating -e fish}
+	{alacritty msg create-window || alacritty, \
+	alacritty msg create-window --class floating || \
+	alacritty --class floating}
 
 # launchers
 super + {d,c,alt + t}
