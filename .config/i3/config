@@ -15,13 +15,15 @@ set $exec exec --no-startup-id
 #-------------------#
 # apps and bindings #
 #-------------------#
-bindsym $mod+Return $exec sakura -e fish
-bindsym $mod+Shift+Return $exec sakura --class floating -e fish
+bindsym $mod+Return $exec alacritty msg create-window || alacritty
+bindsym $mod+Shift+Return $exec alacritty msg create-window --class floating || alacritty --class floating
 bindsym $mod+t $exec thunar
 bindsym $mod+d $exec j4-dmenu-desktop --dmenu "dmenu -p 'Execute: ' -fn 'SauceCodePro NF Medium' -b -i -l 10 -nb '$bg' -nf '$fg' -sb '$pc' -sf '$bg'" --usage-log /home/kristhian/.cache/j4-dmenu-desktop/usage.log -f
 bindsym $mod+c $exec greenclip print | grep . | dmenu -i -l 10 -p 'Clipboard: ' -fn 'SauceCodePro NF Medium' -b -nb '$bg' -nf '$fg' -sb '$pc' -sf '$bg' | xargs -r -d'\n' -I '{}' greenclip print '{}'
 bindsym Print $exec flameshot full
 bindsym $mod+Print $exec flameshot gui
+bindsym $mod+x $exec pgrep -x fastcompmgr > /dev/null || (fastcompmgr -o 0.4 -r 12 -c -C > /dev/null &)
+bindsym $mod+Shift+x $exec pkill fastcompmgr
 bindsym $mod+Shift+q kill
 bindsym $mod+h split h
 bindsym $mod+v split v

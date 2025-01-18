@@ -1,0 +1,39 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "~/Imágenes/image-go-wild.png",
+    "padding": {
+      "right": 2,
+      "top": 2
+    },
+    "width": 24,
+    "height": 12,
+    "position": "left"
+  },
+  "modules": [
+    "break",
+    "os",
+    "kernel",
+    "uptime",
+    "packages",
+    "shell",
+    "display",
+    "de",
+    "wm",
+    "terminal",
+    "cpu",
+    "gpu",
+    "memory",
+    "swap",
+    "disk",
+    "break",
+    {
+      "type": "colors",
+      "paddingLeft": 0,
+      "symbol": "circle",
+      "block": {
+      "width": 10
+      }
+    }
+  ]
+}

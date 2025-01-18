@@ -28,14 +28,20 @@ super + {KP_Subtract,KP_Add,KP_Enter}
 
 # launch/kill compositor
 super + {_,shift + }x
-	{pgrep -x fastcompmgr > /dev/null || \
-	(fastcompmgr -o 0.4 -r 12 -c -C > /dev/null &), \
+	{pgrep -x fastcompmgr || \
+	(fastcompmgr &), \
 	pkill fastcompmgr}
 
 # reload sxhkd
 super + Escape
 	pkill -USR1 -x sxhkd && notify-send " sxhkd reloaded. "
 
+# keyboard lights on/off
+Scroll_Lock
+	xset -q | grep -q "Scroll Lock:\s*on" && \
+	xset -led named "Scroll Lock" || \
+	xset led named "Scroll Lock"
+	
 
 #---------------#
 # bspwm hotkeys #
@@ -159,5 +165,6 @@ super + {Left,Down,Up,Right}
 # bindings help #
 #---------------#
 
+# show bindings
 super + shift + b
 	show-bindings.sh

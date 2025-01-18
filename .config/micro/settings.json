@@ -19,7 +19,7 @@
     "prettier.singlequote": true,
     "prettier.tabwidth": 4,
     "softwrap": true,
-    "statusformatl": " $(filename) $(modified)($(line),$(col)) $(status.paste)| ft:$(opt:filetype)",
+    "statusformatl": "\u003e $(filename) $(modified)($(line),$(col)) $(status.paste)| ft:$(opt:filetype) ",
     "statusformatr": "$(percentage)% ",
     "wordwrap": true
 }
