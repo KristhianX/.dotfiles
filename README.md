@@ -8,6 +8,7 @@
 - feh (set background images)
 - polybar (status bar)
 - catppuccin-mocha-dark-cursors (mouse cursor theme)
+- Catppuccin-Mocha-Standard-Blue-Dark (GTK Theme)
 - j4-dmenu-desktop (app launcher)
 - bemenu (create menus)
 - dunst (notifications)
@@ -22,7 +23,6 @@
 - Starship.rs (shell prompt)
 - lutgen-rs (apply colorscheme to images)
 - SauceCodePro Nerd Font (terminal and polybar font)
-- Catppuccin-Mocha-Standard-Blue-Dark (GTK Theme)
 
 ## Note!
 
