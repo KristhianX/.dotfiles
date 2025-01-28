@@ -1,4 +1,4 @@
-function n --wraps='nnn -CH' --description 'alias n nnn -CH'
-  nnn -CH $argv
-  cat ~/.local/share/catppuccin-mocha-seq
+function n --wraps='nnn -CH' --wraps='nnn -ACeHnou' --description 'alias n nnn -ACeHnou'
+  nnn -ACeHnou $argv
+        
 end
