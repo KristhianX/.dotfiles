@@ -51,7 +51,7 @@ Scroll_Lock
 super + shift + {e,r}
 	{power-menu.sh,bspc wm -r}
 
-# close and kill
+# close/kill focused window
 super + {_,shift + }q
 	bspc node -{c,k}
 
