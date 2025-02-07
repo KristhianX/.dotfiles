@@ -39,7 +39,7 @@ if [[ $1 -eq 0 ]]; then
 	(greenclip daemon &)
 	(autocutsel &)
 	(autocutsel -s PRIMARY &)
-	(fastcompmgr &)
+	#(fastcompmgr &)
 	(dunst &)
 fi
 

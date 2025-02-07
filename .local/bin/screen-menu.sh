@@ -4,7 +4,7 @@ choice=$(printf "[O]ff\\n[A]lways on\\n[N]ormal\\n[B]right\\n[D]im" | \
 	bemenu -s -P '	 ' -p ' Screen:' \
 	--fn 'SauceCodePro NF Medium 12' \
 	-i -F "[" --auto-select -l 5 --fixed-height \
-	-W 0.2 -w -c -B 2 --ch 22 --cw 2 -H 30 -R 8)
+	-W 0.2 -w -c -B 2 --ch 22 --cw 2 -H 30)
 
 case "$choice" in
 	'[O]ff') 

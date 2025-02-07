@@ -3,7 +3,7 @@
 choice=$(printf "[L]ock\\n[Q]uit\\n[S]uspend\\n[H]ibernate\\n[R]eboot\\n[P]oweroff" | \
 	bemenu -s -P '	 ' -p ' System:' \
 	--fn 'SauceCodePro NF Medium 12' -i -F "[" --auto-select \
-	-l 6 --fixed-height -W 0.2 -w -c -B 2 --ch 22 --cw 2 -H 30 -R 8)
+	-l 6 --fixed-height -W 0.2 -w -c -B 2 --ch 22 --cw 2 -H 30)
 
 case "$choice" in
 	'[L]ock') 

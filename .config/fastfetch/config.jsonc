@@ -4,8 +4,9 @@
     "source": "~/.local/share/openSUSE.txt",
     "type": "file",
     "padding": {
-      "right": 0,
-      "top": 0
+      "right": 2,
+      "top": 0,
+      "left": 1
     },
     "position": "left"
   },
