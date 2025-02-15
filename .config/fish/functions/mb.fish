@@ -1,4 +1,4 @@
-function mb --wraps='micro /home/kristhian/.config/bspwm/bspwmrc' --description 'alias mb micro /home/kristhian/.config/bspwm/bspwmrc'
-  micro /home/kristhian/.config/bspwm/bspwmrc $argv
+function mb --wraps='micro ~/.config/sway/config.d/bindings.conf' --description 'alias mb micro ~/.config/sway/config.d/bindings.conf'
+  micro ~/.config/sway/config.d/bindings.conf $argv
         
 end

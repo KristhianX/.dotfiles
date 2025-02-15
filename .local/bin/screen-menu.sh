@@ -19,11 +19,13 @@ case "$choice" in
 		polybar-msg action awake hook 0 
 		;;
 	'[B]right') 
-		xrandr --output VGA-1 --brightness 1
-		polybar-msg action brightness hook 0 
+		#xrandr --output VGA-1 --brightness 1
+		#polybar-msg action brightness hook 0
+		killall gammastep
 		;;
 	'[D]im') 
-		xrandr --output VGA-1 --brightness .7
-		polybar-msg action brightness hook 0 
+		#xrandr --output VGA-1 --brightness .7
+		#polybar-msg action brightness hook 0
+		gammastep -l 0:0 -o -b 0.7:0.7 -t 6500K:6500K
 		;;
 esac

@@ -1,0 +1,81 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 24,
+    "modules-left": ["sway/workspaces", "custom/scratchpad", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["tray", "custom/notification", "memory", "network", "pulseaudio", "clock"],
+    "sway/mode": {
+        "format": "{}"
+    },
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"format": "{name} {icon}",
+		"format-icons": {
+			"1": "󰖟 ",
+			"2": " ",
+			"3": " ",
+			"4": " ",
+			"5": " ",
+			"default": " "
+		}
+	},
+    "sway/window": {
+    	"format": "  {}",
+        "max-length": 50,
+        "tooltip": false
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+		"tooltip": false,
+        "format": "  {:%H:%M}",
+        // "format-alt": "  {:%a %d %b    %H:%M}",
+        "on-click": "foot --app-id floating-foot fish -c 'cal -3 && fish'",
+        "interval": 10
+    },
+    "memory": {
+		"tooltip": false,
+        "format": "  {}%",
+        "states": {
+          "warning": 80	
+        },
+        "interval": 30
+    },
+    "network": {
+        "tooltip": false,
+        "format-wifi": "󰤨  Up",
+        "format-ethernet": "󰈀  Up",
+        "format-disconnected": "  Down"
+    },
+    "pulseaudio": {
+        "format": "  {volume}%",
+        "format-muted": "  {volume}%",
+        "scroll-step": 5,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "tooltip": false
+    },
+    "custom/scratchpad": {
+        "format-text": "{}",
+        "return-type": "json",
+        "interval": 3,
+        "exec": "/usr/share/openSUSEway/helpers/scratchpad-indicator.sh 2> /dev/null",
+        "exec-if": "exit 0",
+        "on-click": "swaymsg 'scratchpad show'",
+        "on-click-right": "swaymsg 'move scratchpad'"
+    },
+    "custom/notification": {
+		"tooltip": false,
+		"format": " 󰎟 ",
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"on-click": "swaync-client -t -sw",
+		"on-click-right": "swaync-client -d -sw",
+		"escape": true
+	}
+}

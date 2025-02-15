@@ -1,4 +1,4 @@
-function ms --wraps='micro /home/kristhian/.config/sxhkd/sxhkdrc' --description 'alias ms micro /home/kristhian/.config/sxhkd/sxhkdrc'
-  micro /home/kristhian/.config/sxhkd/sxhkdrc $argv
+function ms --wraps='micro ~/.config/sway/config' --description 'alias ms micro ~/.config/sway/config'
+  micro ~/.config/sway/config $argv
         
 end

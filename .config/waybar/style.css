@@ -1,0 +1,55 @@
+@import "mocha.css";
+
+* {
+    font-family: "Source Code Pro", "SauceCodePro NF";
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+#waybar {
+    color: @subtext0;
+    background-color: @surface0;
+}
+
+#workspaces,
+#mode,
+#window,
+#tray,
+#clock,
+#memory,
+#network,
+#pulseaudio,
+#custom-scratchpad,
+#custom-notification {
+    margin: 0 5px;
+    padding: 0 5px;
+}
+
+#workspaces button {
+    color: @subtext0;
+    padding: 0 5px;
+}
+
+#workspaces button.focused {
+    color: @blue;
+}
+
+#workspaces button.visible {
+    color: @blue;
+}
+
+#workspaces button.urgent {
+    color: @red;
+}
+
+#memory.warning,
+#network.disconnected,
+#pulseaudio.muted {
+	color: @red;
+}
+
+#waybar.empty #window {
+	color: transparent;
+	background-color: transparent;
+}

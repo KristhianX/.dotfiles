@@ -2,6 +2,12 @@
     "/home/kristhian/.config/i3/config": {
         "filetype": "shell"
     },
+    "/home/kristhian/.config/sway/config": {
+        "filetype": "shell"
+    },
+    "/home/kristhian/.config/sway/config.d/bindings.conf": {
+        "filetype": "shell"
+    },
     "/home/kristhian/.config/sxhkd/sxhkdrc": {
         "filetype": "shell"
     },
@@ -11,6 +17,7 @@
     "eofnewline": false,
     "hlsearch": true,
     "linter": false,
+    "mkparents": true,
     "pluginrepos": [
         "https://raw.githubusercontent.com/gamemaker1/micro-plugin-prettier/main/repo.json"
     ],

@@ -1,0 +1,95 @@
+#==================#
+# sway config file #
+#==================#
+
+
+#--------------------#
+# font and variables #
+#--------------------#
+font pango:SauceCodePro NF Medium 10
+set $mod Mod4
+set $alt Mod1
+set $term foot
+set $menu j4-launcher.sh
+set $wob wob --config /etc/sway/wob/wob.ini
+set $screenlock 'swaylock --config /etc/swaylock/openSUSEway.conf'
+
+
+#----------------------#
+# output configuration #
+#----------------------#
+output * bg /home/kristhian/Imágenes/Fondos-de-pantalla/wallhaven-83lq62_1920x1080_catppuccin-mocha.png fill
+
+
+#----------------------#
+# input configuration #
+#----------------------#
+input "type:keyboard" {
+  xkb_layout es
+}
+
+
+#----------#
+# settings #
+#----------#
+floating_modifier $mod normal
+workspace_layout default
+title_align center
+default_border pixel 2
+smart_borders on
+gaps inner 10
+gaps outer 0
+smart_gaps off
+
+
+#---------------------#
+# lockscreen and idle #
+#---------------------#
+exec swayidle -w \
+	timeout 600 $screenlock \
+	timeout 660 'swaymsg "output * power off"' \
+	resume 'swaymsg "output * power on"' \
+	before-sleep $screenlock
+
+
+#-----#
+# bar #
+#-----#
+bar {
+    swaybar_command waybar
+}
+
+
+include ~/.config/sway/config.d/*
+include catppuccin-mocha
+
+
+#--------#
+# colors #
+#--------#
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
+
+
+#------#
+# exec #
+#------#
+exec_always {
+    systemctl --user import-environment
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    test -e $SWAYSOCK.wob || mkfifo $SWAYSOCK.wob
+    tail -f $SWAYSOCK.wob | $wob
+    swaync --style /etc/sway/swaync/style.css --config /etc/sway/swaync/config.json
+}
+exec {
+    /usr/libexec/polkit-gnome-authentication-agent-1
+    /usr/bin/gnome-keyring-daemon --start --components=secrets
+    /usr/bin/gnome-keyring-daemon --start --components=pkcs11
+	clipse -listen
+    wl-paste -pw wl-copy
+}
