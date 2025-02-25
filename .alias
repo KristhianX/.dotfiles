@@ -1,3 +1,4 @@
 alias x=exit
 alias c=clear
 alias m=micro
+alias f='clear; fish'

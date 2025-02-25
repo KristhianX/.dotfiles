@@ -4,7 +4,7 @@
     "height": 24,
     "modules-left": ["sway/workspaces", "custom/scratchpad", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["tray", "custom/notification", "memory", "network", "pulseaudio", "clock"],
+    "modules-right": ["tray", "custom/audio_idle_inhibitor", "custom/notification", "memory", "network", "pulseaudio", "clock"],
     "sway/mode": {
         "format": "{}"
     },
@@ -13,52 +13,65 @@
 		"all-outputs": true,
 		"format": "{name} {icon}",
 		"format-icons": {
-			"1": "󰖟 ",
-			"2": " ",
-			"3": " ",
-			"4": " ",
-			"5": " ",
-			"default": " "
+			"1": "󰖟",
+			"2": "",
+			"3": "",
+			"4": "",
+			"5": "",
+			"default": ""
 		}
 	},
     "sway/window": {
-    	"format": "  {}",
+    	"format": " {}",
         "max-length": 50,
         "tooltip": false
     },
     "tray": {
         // "icon-size": 21,
-        "spacing": 10
+        "spacing": 5
     },
     "clock": {
 		"tooltip": false,
-        "format": "  {:%H:%M}",
-        // "format-alt": "  {:%a %d %b    %H:%M}",
+        "format": " {:%H:%M}",
+        // "format-alt": " {:%a %d %b   %H:%M}",
         "on-click": "foot --app-id floating-foot fish -c 'cal -3 && fish'",
         "interval": 10
     },
     "memory": {
 		"tooltip": false,
-        "format": "  {}%",
+        "format": " {}%",
         "states": {
           "warning": 80	
         },
-        "interval": 30
+        "interval": 10
     },
     "network": {
         "tooltip": false,
-        "format-wifi": "󰤨  Up",
-        "format-ethernet": "󰈀  Up",
-        "format-disconnected": "  Down"
+        "format-wifi": "󰤨 Up",
+        "format-ethernet": "󰈀 Up",
+        "format-disconnected": " Down"
     },
     "pulseaudio": {
-        "format": "  {volume}%",
-        "format-muted": "  {volume}%",
+        "format": " {volume}%",
+        "format-muted": " {volume}%",
         "scroll-step": 5,
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol",
         "tooltip": false
     },
+    "custom/audio_idle_inhibitor": {
+		"tooltip": false,
+		"format": "{icon}",
+		"exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
+		"exec-if": "which sway-audio-idle-inhibit",
+		"return-type": "json",
+		"format-icons": {
+			"output": "",
+			"input": "",
+			"output-input": "  ",
+			"none": ""
+		}
+	},
     "custom/scratchpad": {
         "format-text": "{}",
         "return-type": "json",

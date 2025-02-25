@@ -1,14 +1,18 @@
 # alias
 test -s ~/.alias && . ~/.alias || true
 
-case "$-" in
-	*i*)
-		# starship
-		eval "$(starship init bash)"
-		# catppuccin mocha colors
-		#(cat ~/.local/share/catppuccin-mocha-seq &)
-esac
-
+if [[ "$(tty)" == "/dev/tty"* ]]; then
+    # Commands to run only in console TTYs
+    source ~/.local/share/colors-tty.sh
+else
+	case "$-" in
+		*i*)
+			# starship
+			eval "$(starship init bash)"
+			# catppuccin mocha colors
+			#(cat ~/.local/share/catppuccin-mocha-seq &)
+	esac
+fi
 # Disable hardware acceleration
 #export LIBGL_ALWAYS_SOFTWARE=1
 

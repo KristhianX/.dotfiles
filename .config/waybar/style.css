@@ -1,7 +1,7 @@
 @import "mocha.css";
 
 * {
-    font-family: "Source Code Pro", "SauceCodePro NF";
+    font-family: "Source Code Pro", "SauceCodePro NFP";
     font-size: 14px;
     margin: 0;
     padding: 0;
@@ -21,9 +21,14 @@
 #network,
 #pulseaudio,
 #custom-scratchpad,
-#custom-notification {
+#custom-notification,
+#custom-audio_idle_inhibitor {
     margin: 0 5px;
-    padding: 0 5px;
+    padding: 0;
+}
+
+#clock {
+	padding: 0 5px 0 0;
 }
 
 #workspaces button {

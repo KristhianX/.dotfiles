@@ -12,7 +12,7 @@ set $alt Mod1
 set $term foot
 set $menu j4-launcher.sh
 set $wob wob --config /etc/sway/wob/wob.ini
-set $screenlock 'swaylock --config /etc/swaylock/openSUSEway.conf'
+set $screenlock swaylock
 
 
 #----------------------#
@@ -26,6 +26,7 @@ output * bg /home/kristhian/Imágenes/Fondos-de-pantalla/wallhaven-83lq62_1920x1
 #----------------------#
 input "type:keyboard" {
   xkb_layout es
+  xkb_numlock enabled
 }
 
 
@@ -60,6 +61,9 @@ bar {
 }
 
 
+#---------#
+# include #
+#---------#
 include ~/.config/sway/config.d/*
 include catppuccin-mocha
 
@@ -84,12 +88,14 @@ exec_always {
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
     test -e $SWAYSOCK.wob || mkfifo $SWAYSOCK.wob
     tail -f $SWAYSOCK.wob | $wob
-    swaync --style /etc/sway/swaync/style.css --config /etc/sway/swaync/config.json
+    swaync
 }
 exec {
     /usr/libexec/polkit-gnome-authentication-agent-1
-    /usr/bin/gnome-keyring-daemon --start --components=secrets
-    /usr/bin/gnome-keyring-daemon --start --components=pkcs11
-	clipse -listen
-    wl-paste -pw wl-copy
+    #/usr/bin/gnome-keyring-daemon --start --components=secrets
+    #/usr/bin/gnome-keyring-daemon --start --components=pkcs11
+    /usr/bin/gnome-keyring-daemon -s
+    sway-audio-idle-inhibit
+    clipse -listen
+    sleep 5 && wl-paste -pw wl-copy
 }
